@@ -136,24 +136,31 @@ export default function JobList() {
           {jobs.map((job) => (
             <div
               key={job.id}
-              className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+              className="bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-300"
             >
-              <div className="p-6">
+              <div className="p-6 space-y-4">
                 <div className="flex justify-between items-start">
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-1">
+                    <p className="text-xs text-gray-500">Title:</p>
+                    <h3 className="text-lg font-semibold text-gray-900 leading-tight">
                       {job.title}
                     </h3>
-                    <p className="text-sm font-medium text-blue-600 mb-2">
+
+                    <p className="text-xs text-gray-500 mt-2">Company:</p>
+                    <p className="text-sm font-medium text-blue-600">
                       {job.company}
                     </p>
                   </div>
-                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                    {job.jobType}
-                  </span>
+
+                  <div className="text-right">
+                    <p className="text-xs text-gray-500">Job Type:</p>
+                    <span className="inline-block px-3 py-1 mt-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                      {job.jobType}
+                    </span>
+                  </div>
                 </div>
 
-                <div className="mt-4 flex items-center text-sm text-gray-500">
+                <div className="flex items-center text-sm text-gray-500">
                   <svg
                     className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
                     fill="none"
@@ -173,20 +180,23 @@ export default function JobList() {
                       d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                     />
                   </svg>
-                  {job.location}
+                  <span>
+                    <span className="text-xs text-gray-500 mr-1">
+                      Location:
+                    </span>
+                    {job.location}
+                  </span>
                 </div>
 
-                <div className="mt-4">
-                  <h4 className="text-sm font-medium text-gray-900">
-                    Description
+                <div>
+                  <h4 className="text-sm font-medium text-gray-900 mb-1">
+                    Description:
                   </h4>
-                  <p className="mt-1 text-sm text-gray-600">
-                    {job.description}
-                  </p>
+                  <p className="text-sm text-gray-600">{job.description}</p>
                 </div>
 
-                <div className="mt-6 flex justify-between items-center">
-                  <span className="text-xs text-gray-500">
+                <div className="flex justify-between items-center pt-4 border-t border-gray-100">
+                  <span className="text-xs text-gray-400">
                     Posted on {new Date(job.createdAt).toLocaleDateString()}
                   </span>
                   <button
